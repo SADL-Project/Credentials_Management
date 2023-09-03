@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form</title>
+</head>
+<body>
+    <h1>Form</h1>
+    <div class="container">
+        <form id="loginForm">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required><br>
+            <br>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required><br>
+            <br>
+            <input type="submit" value="Login">
+        </form>
+   </div> 
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            let hash = 0;
+     
+            
+      
+            for (i = 0; i < password.length; i++) {
+                char = password.charCodeAt(i);
+                hash = ((hash << 5) - hash) + char;
+                hash = hash & hash;
+            }
+      
+            console.log(username);
+            console.log(hash);
+        });
+    </script>
+</body>
+</html>
